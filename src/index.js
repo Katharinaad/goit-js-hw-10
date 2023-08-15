@@ -11,7 +11,7 @@ const loaderElement = document.querySelector('.loader');
 
 selectBreed.addEventListener('change', changeCatBreed);
 
-fetchAndRenderBreeds();
+fetchAndSelectBreeds();
 
 // function that selects a breed of a cat
 function changeCatBreed(event) {
@@ -27,12 +27,12 @@ function changeCatBreed(event) {
     });
 }
 
-// fetch data after loading the page
-function fetchAndRenderBreeds() {
+// fetch data after loading the page makes the markup in select
+function fetchAndSelectBreeds() {
   loaderElement.classList.remove('hidden');
   fetchBreeds()
     // .then(breeds => console.log(breeds))
-    .then(breeds => renderBreedsSelect(breeds))
+    .then(breeds => markupBreedsSelect(breeds))
     .catch(error => {
       console.log(error);
       Notiflix.Notify.failure(
@@ -42,7 +42,7 @@ function fetchAndRenderBreeds() {
     .finally(() => loaderElement.classList.add('hidden'));
 }
 
-function renderBreedsSelect(breeds) {
+function markupBreedsSelect(breeds) {
   const optionMarkup = breeds
     .map(breed => {
       return `<option value="${breed.reference_image_id}">${breed.name}</option>`;
