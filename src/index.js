@@ -49,7 +49,7 @@ function fetchAndSelectBreeds() {
 function markupBreedsSelect(breeds) {
   const optionMarkup = breeds
     .map(breed => {
-      return `<option value="${breed.reference_image_id}">${breed.name}</option>`;
+      return `<option value="${breed.id}">${breed.name}</option>`;
     })
     .join('');
   selectBreed.insertAdjacentHTML('beforeend', optionMarkup);
@@ -57,20 +57,13 @@ function markupBreedsSelect(breeds) {
 
 // makes a markup of a given cat (picture and text)
 function renderBreedDescription(breed) {
-  const pictureMarkup = `<img src="${breed.url}" alt="${breed.name}">`;
-  const descriptionMarkup = `<h2>${breed.breeds[0].name}</h2>
-<p>${breed.breeds[0].description}</p>`;
-  catPicture.insertAdjacentHTML('beforeend', pictureMarkup);
-  catDescription.insertAdjacentHTML('beforeend', descriptionMarkup);
-}
+  console.log(breed);
+  const pictureMarkup = `<img src="${breed[0].url}" alt="${breed.name}">`;
+  const descriptionMarkup = `<h2>${breed[0].breeds[0].name}</h2>
+<p>${breed[0].breeds[0].description}</p>`;
 
-// const markup = el => {
-//   return `<img class="cat-img" src="${el.url}" alt="${el.breeds[0].name}">
-//     <div class="cat-text">
-//       <h1 class="cat-header">${el.breeds[0].name}</h1>
-//       <p>${el.breeds[0].description}</p>
-//       <p><span><b>Temperament: </b>
-//       </span>${el.breeds[0].temperament}</p>
-//     </div>`;
-// };
-// catInformation.innerHTML = markup(breed[0]);
+  catPicture.innerHTML = pictureMarkup;
+  catDescription.innerHTML = descriptionMarkup;
+  // catPicture.insertAdjacentHTML('beforeend', pictureMarkup);
+  // catDescription.insertAdjacentHTML('beforeend', descriptionMarkup);
+}
