@@ -22,6 +22,7 @@ function changeCatBreed(event) {
     .then(breed => renderBreedDescription(breed))
     // .then(breed => console.log(breed))
     .catch(error => {
+      console.log(error);
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
@@ -40,7 +41,9 @@ function fetchAndSelectBreeds() {
         'Oops! Something went wrong! Try reloading the page!'
       );
     })
-    .finally(() => loaderElement.classList.add('hidden'));
+    .finally(() => {
+      loaderElement.classList.add('hidden');
+    });
 }
 
 function markupBreedsSelect(breeds) {
@@ -54,10 +57,20 @@ function markupBreedsSelect(breeds) {
 
 // makes a markup of a given cat (picture and text)
 function renderBreedDescription(breed) {
-  console.log(breed);
   const pictureMarkup = `<img src="${breed.url}" alt="${breed.name}">`;
   const descriptionMarkup = `<h2>${breed.breeds[0].name}</h2>
-  <p>${breed.breeds[0].description}</p>`;
+<p>${breed.breeds[0].description}</p>`;
   catPicture.insertAdjacentHTML('beforeend', pictureMarkup);
   catDescription.insertAdjacentHTML('beforeend', descriptionMarkup);
 }
+
+// const markup = el => {
+//   return `<img class="cat-img" src="${el.url}" alt="${el.breeds[0].name}">
+//     <div class="cat-text">
+//       <h1 class="cat-header">${el.breeds[0].name}</h1>
+//       <p>${el.breeds[0].description}</p>
+//       <p><span><b>Temperament: </b>
+//       </span>${el.breeds[0].temperament}</p>
+//     </div>`;
+// };
+// catInformation.innerHTML = markup(breed[0]);
