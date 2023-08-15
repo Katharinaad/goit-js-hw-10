@@ -1,1 +1,0 @@
-{"mappings":"AAEoBA,SAASC,cAAc","sources":["src/index.js"],"sourcesContent":["import './css/styles.css';\n\nconst selectBreed = document.querySelector('.breed-select');\n\n// const breedId = event.target.value;\n"],"names":["document","querySelector"],"version":3,"file":"index.145afbf5.js.map"}
