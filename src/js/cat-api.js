@@ -28,12 +28,14 @@ function fetchCatByBreed(breedId) {
     api_key: API_KEY,
   });
 
-  return fetch(`${SEARCH_URL}/${breedId}?${params}`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.statusText);
+  return fetch(`${SEARCH_URL}?breed_ids${breedId}&api_key=${API_KEY}`).then(
+    response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
     }
-    return response.json();
-  });
+  );
 }
 
 export { fetchBreeds, fetchCatByBreed };
