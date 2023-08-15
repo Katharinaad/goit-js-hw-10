@@ -23,7 +23,7 @@ function fetchAndRenderBreeds() {
     // .then(breeds => console.log(breeds))
     .then(breeds => renderBreedsSelect(breeds))
     .catch(error => {
-      console.log(error);
+      //   console.log(error);
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
