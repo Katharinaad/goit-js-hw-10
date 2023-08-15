@@ -7,6 +7,7 @@ import Notiflix from 'notiflix';
 const selectBreed = document.querySelector('.breed-select');
 const catPicture = document.querySelector('.cat-picture');
 const catDescription = document.querySelector('.cat-description');
+const catInformation = document.querySelector('.cat-info');
 const loaderElement = document.querySelector('.loader');
 
 selectBreed.addEventListener('change', changeCatBreed);
@@ -51,6 +52,7 @@ function markupBreedsSelect(breeds) {
   selectBreed.insertAdjacentHTML('beforeend', optionMarkup);
 }
 
+// makes a markup of a given cat (picture and text)
 function renderBreedDescription(breed) {
   const pictureMarkup = `<img src="${breed.url}" alt="${breed.name}">`;
   const descriptionMarkup = `<h2>${breed.breeds[0].name}</h2>
