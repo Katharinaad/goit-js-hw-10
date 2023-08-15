@@ -54,6 +54,7 @@ function markupBreedsSelect(breeds) {
 
 // makes a markup of a given cat (picture and text)
 function renderBreedDescription(breed) {
+  console.log(breed);
   const pictureMarkup = `<img src="${breed.url}" alt="${breed.name}">`;
   const descriptionMarkup = `<h2>${breed.breeds[0].name}</h2>
   <p>${breed.breeds[0].description}</p>`;
