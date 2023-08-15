@@ -53,6 +53,6 @@ function renderBreedDescription(breed) {
   const pictureMarkup = `<img src="${breed.url}" alt="${breed.name}">`;
   const descriptionMarkup = `<h2>${breed.breeds[0].name}</h2>
   <p>${breed.breeds[0].description}</p>`;
-  catPicture.innerHTML = pictureMarkup;
-  catDescription.innerHTML = descriptionMarkup;
+  catPicture.insertAdjacentHTML('beforeend', pictureMarkup);
+  catDescription.insertAdjacentHTML('beforeend', descriptionMarkup);
 }
