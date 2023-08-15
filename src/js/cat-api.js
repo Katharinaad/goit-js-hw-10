@@ -12,11 +12,12 @@ function fetchBreeds() {
     api_key: API_KEY,
   });
 
-  return fetch(`${BREEDS_URL}?api_key=${API_KEY}`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    return response.json();
+  return axios(`${BREEDS_URL}?api_key=${API_KEY}`).then(response => {
+    // if (!response.ok) {
+    //   throw new Error(response.statusText);
+    // }
+    // return response.json();
+    return response.data;
   });
 }
 
@@ -28,36 +29,15 @@ function fetchCatByBreed(breedId) {
     api_key: API_KEY,
   });
 
-  return fetch(`${SEARCH_URL}?breed_ids=${breedId}&api_key=${API_KEY}`).then(
+  return axios(`${SEARCH_URL}?breed_ids=${breedId}&api_key=${API_KEY}`).then(
     response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
+      // if (!response.ok) {
+      //   throw new Error(response.statusText);
+      // }
+      // return response.json();
+      return response.data;
     }
   );
 }
 
 export { fetchBreeds, fetchCatByBreed };
-
-// function fetchBreeds() {
-//   return axios({
-//     method: 'get',
-//     url: BREEDS_URL,
-//   })
-//     .then(response => console.log(response))
-//     .catch(error => console.log(error));
-// }
-
-// console.log(fetchBreeds());
-
-// function fetchCatByBreed(breedId) {
-//   return axios({
-//     method: 'get',
-//     url: SEARCH_URL,
-//   })
-//     .then(response => console.log(response))
-//     .catch(error => console.log(error));
-// }
-
-// console.log(fetchCatByBreed(breedId));
