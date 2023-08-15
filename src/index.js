@@ -11,12 +11,15 @@ const loaderElement = document.querySelector('.loader');
 
 selectBreed.addEventListener('change', changeCatBreed);
 
+fetchAndRenderBreeds();
+
+// function that selects a breed of a cat
 function changeCatBreed(event) {
   const breedId = event.target.value;
   console.log('breedId: ', breedId);
   fetchCatByBreed(breedId)
     .then(breed => renderBreedDescription(breed))
-    // .then(breed => console.log(breed));
+    // .then(breed => console.log(breed))
     .catch(error => {
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
@@ -24,21 +27,20 @@ function changeCatBreed(event) {
     });
 }
 
+// fetch data after loading the page
 function fetchAndRenderBreeds() {
   loaderElement.classList.remove('hidden');
   fetchBreeds()
     // .then(breeds => console.log(breeds))
     .then(breeds => renderBreedsSelect(breeds))
     .catch(error => {
-      //   console.log(error);
+      console.log(error);
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
     })
     .finally(() => loaderElement.classList.add('hidden'));
 }
-
-fetchAndRenderBreeds();
 
 function renderBreedsSelect(breeds) {
   const optionMarkup = breeds
