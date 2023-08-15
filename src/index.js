@@ -14,7 +14,14 @@ selectBreed.addEventListener('change', changeCatBreed);
 function changeCatBreed(event) {
   const breedId = event.target.value;
   console.log('breedId: ', breedId);
-  fetchCatByBreed(breedId);
+  fetchCatByBreed(breedId)
+    .then(breed => renderBreedDescription(breed))
+    // .then(breed => console.log(breed));
+    .catch(error => {
+      Notiflix.Notify.failure(
+        'Oops! Something went wrong! Try reloading the page!'
+      );
+    });
 }
 
 function fetchAndRenderBreeds() {
@@ -40,4 +47,12 @@ function renderBreedsSelect(breeds) {
     })
     .join('');
   selectBreed.insertAdjacentHTML('beforeend', optionMarkup);
+}
+
+function renderBreedDescription(breed) {
+  const pictureMarkup = `<img src="${breed.url}" alt="${breed.name}">`;
+  const descriptionMarkup = `<h2>${breed.breeds[0].name}</h2>
+  <p>${breed.breeds[0].description}</p>`;
+  catPicture.innerHTML = pictureMarkup;
+  catDescription.innerHTML = descriptionMarkup;
 }
