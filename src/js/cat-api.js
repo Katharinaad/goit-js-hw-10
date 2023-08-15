@@ -28,7 +28,7 @@ function fetchCatByBreed(breedId) {
     api_key: API_KEY,
   });
 
-  return fetch(`${SEARCH_URL}/${breedId}?api_key=${API_KEY}`).then(response => {
+  return fetch(`${SEARCH_URL}/${breedId}?${params}`).then(response => {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
