@@ -2,6 +2,9 @@ import './css/styles.css';
 import { fetchCatByBreed } from './js/cat-api';
 import { fetchBreeds } from './js/cat-api';
 
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
+
 import Notiflix from 'notiflix';
 
 const selectBreed = document.querySelector('.breed-select');
@@ -32,6 +35,7 @@ function changeCatBreed(event) {
 // fetch data after loading the page makes the markup in select
 function fetchAndSelectBreeds() {
   loaderElement.classList.remove('hidden');
+
   fetchBreeds()
     // .then(breeds => console.log(breeds))
     .then(breeds => markupBreedsSelect(breeds))
@@ -53,6 +57,10 @@ function markupBreedsSelect(breeds) {
     })
     .join('');
   selectBreed.insertAdjacentHTML('beforeend', optionMarkup);
+  // initialization of SlimSelect
+  new SlimSelect({
+    select: '#selectElement',
+  });
 }
 
 // makes a markup of a given cat (picture and text)
@@ -60,7 +68,7 @@ function renderBreedDescription(breed) {
   console.log(breed);
   const pictureMarkup = `<img src="${breed[0].url}" alt="${breed.name}">`;
   const descriptionMarkup = `<h2>${breed[0].breeds[0].name}</h2>
-<p>${breed[0].breeds[0].description}</p>`;
+<p class="">${breed[0].breeds[0].description}</p>`;
 
   catPicture.innerHTML = pictureMarkup;
   catDescription.innerHTML = descriptionMarkup;
