@@ -19,6 +19,10 @@ fetchAndSelectBreeds();
 
 // function that selects a breed of a cat
 function changeCatBreed(event) {
+  loaderElement.classList.remove('hidden');
+  catDescription.innerHTML = '';
+  catPicture.innerHTML = '';
+
   const breedId = event.target.value;
   console.log('breedId: ', breedId);
   fetchCatByBreed(breedId)
@@ -29,7 +33,8 @@ function changeCatBreed(event) {
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
-    });
+    })
+    .finally(() => loaderElement.classList.add('hidden'));
 }
 
 // fetch data after loading the page makes the markup in select
@@ -47,6 +52,7 @@ function fetchAndSelectBreeds() {
     })
     .finally(() => {
       loaderElement.classList.add('hidden');
+      selectBreed.classList.remove('hidden');
     });
 }
 
