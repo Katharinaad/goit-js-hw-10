@@ -13,6 +13,11 @@ const catDescription = document.querySelector('.cat-description');
 const catInformation = document.querySelector('.cat-info');
 const loaderElement = document.querySelector('.loader');
 
+// window.addEventListener('load', function () {
+//   const loaderContainer = document.querySelector('.loader-container');
+//   loaderContainer.classList.remove('hidden');
+// });
+
 selectBreed.addEventListener('change', changeCatBreed);
 
 fetchAndSelectBreeds();
@@ -52,7 +57,14 @@ function fetchAndSelectBreeds() {
     })
     .finally(() => {
       loaderElement.classList.add('hidden');
+
       selectBreed.classList.remove('hidden');
+
+      // // Adding the window.addEventListener code
+      // window.addEventListener('load', function () {
+      //   const loaderContainer = document.querySelector('.loader-container');
+      //   loaderContainer.classList.remove('hidden');
+      // });
     });
 }
 
