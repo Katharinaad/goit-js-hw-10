@@ -34,7 +34,7 @@ img {
   border: 5px solid #5897fb;
   border-bottom-color: transparent;
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
 
   animation: rotation 1s linear infinite;
