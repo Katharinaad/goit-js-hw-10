@@ -22,6 +22,10 @@ img {
   width: 300px;
 }
 
+.loader {
+  color: gray;
+}
+
 /* .loader {
   width: 48px;
   height: 48px;
